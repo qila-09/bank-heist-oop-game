@@ -4,6 +4,18 @@
 
 This project was mainly a way for me to consolidate my OOP when I first started using object oriented ideas, I wanted a way to train my skills while not making an overly complex outcome, hence the simple game.
 
+**Core Loop** - `Bank` class controls everything, updating guard positions, rendering the display, processing the players actions, expiring used items and checking for any end conditions each turn. Repeates indefinitely until player is ends the game, is caught or inputs 'quit' as their action.
+
+**Layout and Room Management** - `Layout` class genereates all rooms when the program complies and connects them with different `Door` objects, standard for all rooms other than `rSafeDep` and `rVault` which are connected through a `VaultDoor` object.
+
+**Guards and Player Actions** - Both guards and the player are inherit from the `Entity` base class and move around the bank at the end of each cycle. Guards follow a fixed path assigned to each upon creation of a new `Guard` object, whereas players move freely between any room in their current location `ConnectedRooms` list. Players have the option to carry out other actions as well such as taking, dropping or using items when possible. At the start of each turn the guard's method `CheckRoom` is called to see if an undisguised player is in the same room as them, if so the `CatchPlayer` method is subsequently called, ending the game.
+
+**Items** - All item classes inherit from the `Item` base class and are given hard-coded values for worth, display name, whether it will fit a bag item. Select items also have uses and that can benifit the player durring the game and a number of uses before it is discarded. If an item has no use (e.g. cacsh) the number of eses is set to -1.
+
+**Rendering** - The `Display` class prints the updated UI every time the user enters an input and shows the uesr's take, items avalible to pick up in a room, the user's inventory and bag (if equipped), the rooms a user can move to and whether there will be a guard there on the next turn, and the list of possible actions for the user to pick from.
+
+**Win/Loss Conditions** - The game ends when: the player moves to a restricted room occupied by a guard while not having a disguise equipped, the player entering 'E' after returning to the street with their total take, the player entering 'quit' when asked to input an action
+
 ## Gameplay
 
 Play as a theif attempting to rob a bank, moving through room, collecting items and avoiding guards. The game ends when you succesfully exit the building and make it back to the street with the items you have stolen or when a guard catches you in a restricted area of the bank.
@@ -29,7 +41,7 @@ Play as a theif attempting to rob a bank, moving through room, collecting items 
 * **Score** - Any items in your inventory and on the street count towards the total take at the end of the game, the take is displayed in the top right of the interface throught the game
 * **Winning** - Once you have decided you have taken enough, make  your way back to the street and enter 'E' to end the game
 
-## MAP
+## Map
 
 ```
 Street
