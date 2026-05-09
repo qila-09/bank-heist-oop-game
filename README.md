@@ -3,7 +3,7 @@
 ## Overview
 
 This C# console game was built to strengthen my understanding of object-oriented programming. 
-I wanted to apply OOP principles such as inheritance, encapsulation, and class interaction in a complete but simplistic project as its purpose was purely to solidify my understanding and fluency with these ideas.
+I wanted to apply OOP principles such as inheritance, encapsulation, and class interaction in a complete but manageable project as its purpose was purely to solidify my understanding and fluency with these ideas.
 
 **Core Loop** - `Bank` class controls everything, updating guard positions, rendering the display, processing the players actions, expiring used items and checking for any end conditions each turn. Repeats indefinitely until player ends the game, is caught or inputs 'quit' as their action.
 
@@ -18,14 +18,18 @@ I wanted to apply OOP principles such as inheritance, encapsulation, and class i
 **Win/Loss Conditions** - The game ends when: the player moves to a restricted room occupied by a guard while not having a disguise equipped, the player entering 'E' after returning to the street with their total take, the player entering 'quit' when asked to input an action
 
 **Technical Concepts**
-- Inheritance: `Entity` is base for `Player` and `Guard`
-               `Item` is base for all in game items
-- Polymorphism: `Item.Use()` is overwritten and tailored for any item with a use
-                Both sub classes of the `Door` class use the `Unlock` method
-- Encapsulation: Each class uses getters to access anything
-                 Game state and display are updated through methods built into other classes
-- Abstraction: Turn based system allows for many things to happen in an incremental manner
-               Graph style room layout is easy to manage
+- Inheritance:
+    - `Entity` is base for `Player` and `Guard`
+    - `Item` is base for all in game items
+- Polymorphism:
+    - `Item.Use()` is overwritten and tailored for any item with a use
+    - Both sub classes of the `Door` class use the `Unlock` method
+- Encapsulation:
+    - Many classes use getters to access interal values
+    - Game state and display are updated through methods built into other classes
+- Abstraction:
+    - Turn based system allows for many things to happen in an incremental manner
+    - Graph style room layout is easy to manage
 - Centralised error handling allows for any error to be managed cleanly and consistently
                 
 ## Gameplay
